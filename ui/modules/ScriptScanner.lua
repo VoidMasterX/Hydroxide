@@ -124,6 +124,28 @@ local function createConstant(index, value)
     ListButton.new(instance, constantsList)
 end
 
+local function createEnvironment(index, value)
+    local instance = Assets.ProtoPod:Clone()
+    local information = instance.Information
+    local functionName = getInfo(value).name or ''
+    local indexWidth = TextService:GetTextSize(index, 18, "SourceSans", constants.textWidth).X + 8
+
+    if functionName == '' then
+        functionName = "Unnamed function"
+        information.Label.TextColor3 = oh.Constants.Syntax["unnamed_function"]
+    end
+    
+    information.Index.Text = index
+    information.Label.Text = functionName
+
+    information.Index.Size = UDim2.new(0, indexWidth, 0, 20)
+    information.Label.Size = UDim2.new(1, -(indexWidth + 20), 1, 0)
+    information.Icon.Position = UDim2.new(0, indexWidth, 0, 2)
+    information.Label.Position = UDim2.new(0, indexWidth + 20, 0, 0)
+
+    ListButton.new(instance, protosList)
+end
+
 -- Log Object
 local Log = {}
 
@@ -162,9 +184,9 @@ function Log.new(localScript)
                 createConstant(i, v)
             end
 
-            -- for i,v in pairs(localScript.Environment) do
-            --     createEnvironment(i, v)
-            -- end
+            for i,v in pairs(localScript.Environment) do
+                createEnvironment(i, v)
+            end
 
             -- script decompilation here
 
