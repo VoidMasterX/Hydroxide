@@ -92,7 +92,7 @@ Collapse.MouseButton1Click:Connect(function()
 	Open:TweenPosition(constants.reveal, "Out", "Quad", 0.15)
 end)
 
-MessageBox.Show("Welcome to Hydroxide", "This is not a finished product", MessageType.OK)
+MessageBox.Show("Welcome to Peroxide", "This is a fork of Hydroxide", MessageType.OK)
 
 if PROTOSMASHER_LOADED ~= nil then
 	Interface.Parent = get_hidden_gui()
