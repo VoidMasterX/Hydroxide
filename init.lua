@@ -5,7 +5,7 @@ if oh then
 end
 
 local web = true
-local user = "VoidMasterX" -- change if you're using a fork
+local user = "VoidMasterX"
 local importCache = {}
 
 local function import(asset)
